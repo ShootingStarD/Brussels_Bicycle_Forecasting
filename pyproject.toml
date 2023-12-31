@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["brussels_bike_forecasting"]
+
+[project]
+name = "brussels-bike-forecasting"
+version = "2023.12.31"
+
+authors = [
+  {name = "Loïc Quivron"},
+]
+maintainers = [
+  {name = "Loïc Quivron"}
+]
+description = "Project to predict bikes traffic flow and speed using Brussels Mobility API public data"
+readme = "README.md"
+dependencies = [
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "seaborn",
+    "requests",
+]
+requires-python = ">= 3.9"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "coverage",
+    "pytest-cov",
+    "pre-commit"
+]
+
+
