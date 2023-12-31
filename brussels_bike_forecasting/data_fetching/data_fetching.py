@@ -2,7 +2,8 @@ import pandas as pd
 import requests
 from typing import Dict, List
 
-def get_sensor_devices_json()->List[Dict]:
+
+def get_sensor_devices_json() -> List[Dict]:
     """
     Get a list of all bike sensors from Brussels Mobility Bike API.
 
@@ -21,12 +22,13 @@ def get_sensor_devices_json()->List[Dict]:
     response = requests.get(DEVICE_REQUEST)
     if not response.status_code == 200:
         raise response.raise_for_status()
-    return response.json()["features"]        
+    return response.json()["features"]
 
-def get_sensor_devices_dataframe()->pd.DataFrame:
+
+def get_sensor_devices_dataframe() -> pd.DataFrame:
     """
     Get a dataframe with most important informations of the sensor devices
-    
+
     Having a dataframe of those devices will allow easy plotting as well as querying bikes counts from all those devices
 
     Returns
@@ -41,13 +43,12 @@ def get_sensor_devices_dataframe()->pd.DataFrame:
         "geometry.type",
         "geometry.coordinates",
         "properties.road_en",
-        'properties.lane_schema',
-        'properties.basic_schema',
-        'properties.detailed_schema', 
-        'properties.picture_1',
-        'properties.picture_2'
+        "properties.lane_schema",
+        "properties.basic_schema",
+        "properties.detailed_schema",
+        "properties.picture_1",
+        "properties.picture_2",
     ]
     devices_df = devices_df[devices_important_columns]
     devices_df.columns = [column.split(".")[1] for column in devices_df.columns]
     return devices_df
-    
