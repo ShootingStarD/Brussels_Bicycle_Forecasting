@@ -31,10 +31,16 @@ dev = [
     "pytest",
     "coverage",
     "pytest-cov",
-    "pre-commit"
+    "pre-commit",
+    "black",
+    "isort",
 ]
 
 
 [tool.black]
 line-length = 88
 include = "brussels_bike_forecasting/"
+
+
+[tool.isort]
+profile = "black"

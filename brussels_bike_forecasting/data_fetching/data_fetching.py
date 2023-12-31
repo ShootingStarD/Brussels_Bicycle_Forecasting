@@ -1,8 +1,9 @@
+import argparse
 from pathlib import Path
+from typing import Dict, List
+
 import pandas as pd
 import requests
-from typing import Dict, List
-import argparse
 
 
 def get_sensor_devices_json() -> List[Dict]:
