@@ -1,6 +1,8 @@
+from typing import Dict
+from typing import List
+
 import pandas as pd
 import requests
-from typing import Dict, List
 
 
 def get_sensor_devices_json() -> List[Dict]:
