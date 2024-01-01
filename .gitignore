@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 .brussels_bicycle_forecasting
 data
+.vscode

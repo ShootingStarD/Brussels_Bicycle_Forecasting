@@ -23,6 +23,8 @@ dependencies = [
     "scikit-learn",
     "seaborn",
     "requests",
+    "pandera",
+    "pydantic",
 ]
 requires-python = ">= 3.9"
 

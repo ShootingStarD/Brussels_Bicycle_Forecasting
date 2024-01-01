@@ -58,13 +58,6 @@ def get_sensor_devices_dataframe() -> pd.DataFrame:
     return devices_df
 
 
-def sensor_devices_to_parquet(path: Path):
-    """
-    Load and save sensors devices in a parquet file
-    """
-    get_sensor_devices_dataframe().to_parquet()
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Save the devices data from Brussels Mobility Bike API into a parquet file."
@@ -72,6 +65,4 @@ if __name__ == "__main__":
     parser.add_argument("output_file", type=str, help="Path of the parquet file")
     args = parser.parse_args()
     path = Path(args.output_file)
-    if path.exists():
-        raise FileExistsError(f"File already exists at path {path.absolute()}")
     get_sensor_devices_dataframe().to_parquet(path)
