@@ -1,3 +1,6 @@
+"""
+Fetch the measures of the bikes accross devices from the Brussels Mobility Bike Counts API
+"""
 import datetime as dt
 from typing import List
 
@@ -9,10 +12,6 @@ from .constants import BIKE_API_BASE_URL
 API_REQUEST_DATE_FORMAT = "%Y%m%d"
 import pandera as pa
 from pandera.typing import DataFrame, Series
-
-"""
-Fetch the measures of the bikes accross devices from the Brussels Mobility Bike Counts API
-"""
 
 
 class BikeMeasuresSingleDeviceRawSchema(pa.SchemaModel):
@@ -87,7 +86,29 @@ def get_bike_counts_accross_devices(
     start_date: dt.date,
     end_date: dt.date,
 ) -> DataFrame[BikeMeasuresMultipleDevicesRawSchema]:
+    """
+    Retrieve the counts and speeds of bikes for multiple devices in a specific time range.
 
+    Parameters
+    ----------
+    devices : List[str]
+        the device of which to query the metrics.
+    start_date : dt.date
+        the data at which we want to start retrieving measures.
+    end_date : dt.date
+        the date at which we want to end retrieving measures.
+
+    Returns
+    -------
+    DataFrame[BikeMeasuresMultipleDevicesRawSchema]
+        dataframe with counts and speeds of bikes accross multiple devices every 15 minutes in
+        the specified time range.
+
+    Raises
+    ------
+    response.raise_for_status
+        if the data was not accessed
+    """
     bike_measures_list = []
     for device in devices:
         bikes_measures_one_device = get_bike_counts_for_one_device(

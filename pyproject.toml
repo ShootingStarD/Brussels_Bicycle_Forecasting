@@ -46,3 +46,10 @@ include = "brussels_bike_forecasting/"
 
 [tool.isort]
 profile = "black"
+[tool.interrogate]
+verbose = 1
+exclude = ["setup.py", "docs", "build"]
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = true
+fail-under = 70

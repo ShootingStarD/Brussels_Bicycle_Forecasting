@@ -1,3 +1,8 @@
+"""
+Fetch devices from the Brussels Mobility Bike API counts.
+
+The devices are what measures the speed and counts of bikes at some location through time.
+"""
 import argparse
 from pathlib import Path
 from typing import Dict, List
